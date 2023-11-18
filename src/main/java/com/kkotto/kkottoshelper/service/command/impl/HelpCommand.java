@@ -20,7 +20,7 @@ public class HelpCommand implements BotCommand {
                     """,
             CommandList.START.getCommandName(),
             CommandList.HELP.getCommandName(),
-            CommandList.FIND.getCommandName()
+            CommandList.SEARCH.getCommandName()
     );
 
     public HelpCommand(SendMessageService sendMessageService) {

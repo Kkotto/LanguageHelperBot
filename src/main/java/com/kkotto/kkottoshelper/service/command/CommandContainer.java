@@ -1,7 +1,7 @@
 package com.kkotto.kkottoshelper.service.command;
 
 import com.kkotto.kkottoshelper.service.SendMessageService;
-import com.kkotto.kkottoshelper.service.command.impl.FindCommand;
+import com.kkotto.kkottoshelper.service.command.impl.SearchCommand;
 import com.kkotto.kkottoshelper.service.command.impl.HelpCommand;
 import com.kkotto.kkottoshelper.service.command.impl.UnknownCommand;
 import com.kkotto.kkottoshelper.service.command.impl.StartCommand;
@@ -18,7 +18,7 @@ public class CommandContainer {
         this.commandMap = Map.ofEntries(
                 entry(CommandList.START.getCommandName(), new StartCommand(sendMessageService)),
                 entry(CommandList.HELP.getCommandName(), new HelpCommand(sendMessageService)),
-                entry(CommandList.FIND.getCommandName(), new FindCommand(sendMessageService))
+                entry(CommandList.SEARCH.getCommandName(), new SearchCommand(sendMessageService))
                 );
         unknownCommand = new UnknownCommand(sendMessageService);
     }
