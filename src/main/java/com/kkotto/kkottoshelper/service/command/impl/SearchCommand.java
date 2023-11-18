@@ -7,6 +7,7 @@ import com.kkotto.kkottoshelper.service.command.BotCommand;
 import com.kkotto.kkottoshelper.service.command.CommandList;
 import com.kkotto.kkottoshelper.service.impl.SearchServiceImpl;
 import com.kkotto.kkottoshelper.service.util.MessageUtil;
+import com.kkotto.kkottoshelper.service.util.WordUtil;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 import java.util.List;
@@ -15,27 +16,45 @@ public class SearchCommand implements BotCommand {
     private final SendMessageService sendMessageService;
     private final SearchService searchService;
     private final MessageUtil messageUtil;
-    private final String FIND_RESPONSE =
-            String.format("You've chosen %s command, have you not? I regret to say, but it's not implemented yet~",
-                    CommandList.SEARCH.getCommandName());
+    private final WordUtil wordUtil;
+    private final String EMPTY_REQUEST = String.format(
+            """
+                    Oh dear! I see your enthusiasm, but <b><i>to find a word</i></b> you need to <b><i>specify the word</i></b>, huh?
+                                        
+                    For example: <code>%s hello</code> or <code>%s hello</code>!
+                                        
+                    Let's give it a shot, shall we?
+                    """,
+            CommandList.SEARCH.getCommandName(),
+            CommandList.FIND.getCommandName()
+    );
 
     public SearchCommand(SendMessageService sendMessageService) {
         this.sendMessageService = sendMessageService;
         this.searchService = new SearchServiceImpl();
         this.messageUtil = new MessageUtil();
+        this.wordUtil = new WordUtil();
     }
 
     @Override
     public void execute(Update update) {
         String userWordRequest = parseRequest(update);
-        List<Word> response = searchService.search(userWordRequest);
-        List<String> messages = messageUtil.generateAnswer(response);
-        for (String message : messages) {
-            sendMessageService.sendMessage(update.getMessage().getChatId().toString(), message);
+        if (!userWordRequest.isEmpty()) {
+            List<Word> response = searchService.search(userWordRequest);
+            List<String> messages = wordUtil.parseWords(response);
+            for (String message : messages) {
+                sendMessageService.sendMessage(update.getMessage().getChatId().toString(), message);
+            }
+        } else {
+            sendMessageService.sendMessage(update.getMessage().getChatId().toString(), EMPTY_REQUEST);
         }
+
     }
 
     private String parseRequest(Update update) {
-        return update.getMessage().getText().substring(CommandList.SEARCH.getCommandName().length()).trim();
+        String text = update.getMessage().getText();
+        return text.startsWith(CommandList.FIND.getCommandName()) ?
+                text.substring(CommandList.FIND.getCommandName().length()).trim() :
+                text.substring(CommandList.SEARCH.getCommandName().length()).trim();
     }
 }
