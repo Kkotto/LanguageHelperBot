@@ -4,6 +4,8 @@ Language Helper Bot is a Telegram-bot.
 
 Do you use Telegram a lot? Do you eager to learn new English words? Do you always write down words into the (already huge) list "To review later"? This bot is for you.
 
+# Bot Development Status: In Progress
+
 ## Motivation
 
 - **Save for Later:** Help you save words for later reviewing.
