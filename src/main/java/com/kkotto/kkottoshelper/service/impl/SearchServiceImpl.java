@@ -1,6 +1,7 @@
 package com.kkotto.kkottoshelper.service.impl;
 
 import com.kkotto.kkottoshelper.controller.FreeDictionaryController;
+import com.kkotto.kkottoshelper.exception.RequestException;
 import com.kkotto.kkottoshelper.model.Word;
 import com.kkotto.kkottoshelper.service.SearchService;
 
@@ -14,7 +15,7 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public List<Word> search(String request) {
+    public List<Word> search(String request) throws RequestException {
         return freeDictionaryController.searchInDictionary(request);
     }
 }

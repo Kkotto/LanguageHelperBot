@@ -25,8 +25,10 @@ public class WordUtil {
             // Other phonetics
             if (!(word.getPhonetics() == null) && !word.getPhonetics().isEmpty()) {
                 for (Phonetic phonetic : word.getPhonetics()) {
-                    result.append(", ")
-                            .append(phonetic.getText());
+                    if(!(phonetic.getText()==null) && !phonetic.getText().isEmpty()) {
+                        result.append(", ")
+                                .append(phonetic.getText());
+                    }
                 }
             }
             result.append("\n");
