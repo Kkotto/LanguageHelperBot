@@ -5,6 +5,6 @@ import com.kkotto.kkottoshelper.model.free_dictionary.Word;
 
 import java.util.List;
 
-public interface SearchService {
+public interface FindInDictionaryService {
     List<Word> search(String request) throws RequestException;
 }

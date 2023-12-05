@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WordUtil {
-    public List<String> parseWords(List<Word> wordList) {
+    public List<String> parseFreeDictionaryResponse(List<Word> wordList) {
         List<String> resultList = new ArrayList<>();
         for (Word word : wordList) {
             StringBuilder result = new StringBuilder();
