@@ -16,12 +16,11 @@ public class HelpCommand implements BotCommand {
                     %s - to get command list
 
                     <b>Working with English vocabulary</b>
-                    %s or %s - to find word in dictionary
+                    %s - to find word in dictionary
                     """,
             CommandList.START.getCommandName(),
             CommandList.HELP.getCommandName(),
-            CommandList.FIND.getCommandName(),
-            CommandList.SEARCH.getCommandName()
+            CommandList.FIND.getCommandName()
     );
 
     public HelpCommand(SendMessageService sendMessageService) {
