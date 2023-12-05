@@ -7,7 +7,6 @@ public enum CommandList {
     START("/start"),
     HELP("/help"),
     FIND("/find"),
-    SEARCH("/search"),
     UNKNOWN("/unknown");
     private final String commandName;
 

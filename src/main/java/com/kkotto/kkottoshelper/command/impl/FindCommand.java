@@ -12,7 +12,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 
 import java.util.List;
 
-public class SearchCommand implements BotCommand {
+public class FindCommand implements BotCommand {
     private final SendMessageService sendMessageService;
     private final SearchService searchService;
     private final WordUtil wordUtil;
@@ -20,15 +20,14 @@ public class SearchCommand implements BotCommand {
             """
                     Oh dear! I see your enthusiasm, but <b><i>to find a word</i></b> you need to <b><i>specify the word</i></b>, huh?
                                         
-                    For example: <code>%s hello</code> or <code>%s hello</code>!
+                    For example: <code>%s hello</code>!
                                         
                     Let's give it a shot, shall we?
                     """,
-            CommandList.SEARCH.getCommandName(),
             CommandList.FIND.getCommandName()
     );
 
-    public SearchCommand(SendMessageService sendMessageService) {
+    public FindCommand(SendMessageService sendMessageService) {
         this.sendMessageService = sendMessageService;
         this.searchService = new SearchServiceImpl();
         this.wordUtil = new WordUtil();
@@ -53,9 +52,6 @@ public class SearchCommand implements BotCommand {
     }
 
     private String parseRequest(Update update) {
-        String text = update.getMessage().getText();
-        return text.startsWith(CommandList.FIND.getCommandName()) ?
-                text.substring(CommandList.FIND.getCommandName().length()).trim() :
-                text.substring(CommandList.SEARCH.getCommandName().length()).trim();
+        return update.getMessage().getText().substring(CommandList.FIND.getCommandName().length()).trim();
     }
 }
