@@ -1,9 +1,9 @@
 package com.kkotto.kkottoshelper.service.util;
 
-import com.kkotto.kkottoshelper.model.Definition;
-import com.kkotto.kkottoshelper.model.Meaning;
-import com.kkotto.kkottoshelper.model.Phonetic;
-import com.kkotto.kkottoshelper.model.Word;
+import com.kkotto.kkottoshelper.model.free_dictionary.Definition;
+import com.kkotto.kkottoshelper.model.free_dictionary.Meaning;
+import com.kkotto.kkottoshelper.model.free_dictionary.Phonetic;
+import com.kkotto.kkottoshelper.model.free_dictionary.Word;
 
 import java.util.ArrayList;
 import java.util.List;

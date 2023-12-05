@@ -1,7 +1,7 @@
 package com.kkotto.kkottoshelper.service;
 
 import com.kkotto.kkottoshelper.exception.RequestException;
-import com.kkotto.kkottoshelper.model.Word;
+import com.kkotto.kkottoshelper.model.free_dictionary.Word;
 
 import java.util.List;
 

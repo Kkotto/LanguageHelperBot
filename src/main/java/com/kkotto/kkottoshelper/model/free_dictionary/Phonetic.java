@@ -1,4 +1,4 @@
-package com.kkotto.kkottoshelper.model;
+package com.kkotto.kkottoshelper.model.free_dictionary;
 
 import lombok.Getter;
 import lombok.Setter;
