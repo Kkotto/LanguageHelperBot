@@ -1,4 +1,4 @@
-package com.kkotto.kkottoshelper.service.command;
+package com.kkotto.kkottoshelper.command;
 
 import lombok.Getter;
 

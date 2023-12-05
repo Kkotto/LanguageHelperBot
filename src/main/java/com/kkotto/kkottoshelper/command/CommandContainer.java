@@ -1,10 +1,10 @@
-package com.kkotto.kkottoshelper.service.command;
+package com.kkotto.kkottoshelper.command;
 
 import com.kkotto.kkottoshelper.service.SendMessageService;
-import com.kkotto.kkottoshelper.service.command.impl.HelpCommand;
-import com.kkotto.kkottoshelper.service.command.impl.SearchCommand;
-import com.kkotto.kkottoshelper.service.command.impl.StartCommand;
-import com.kkotto.kkottoshelper.service.command.impl.UnknownCommand;
+import com.kkotto.kkottoshelper.command.impl.HelpCommand;
+import com.kkotto.kkottoshelper.command.impl.SearchCommand;
+import com.kkotto.kkottoshelper.command.impl.StartCommand;
+import com.kkotto.kkottoshelper.command.impl.UnknownCommand;
 
 import java.util.Map;
 

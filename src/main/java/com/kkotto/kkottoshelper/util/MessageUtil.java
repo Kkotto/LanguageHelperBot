@@ -1,4 +1,4 @@
-package com.kkotto.kkottoshelper.service.util;
+package com.kkotto.kkottoshelper.util;
 
 public class MessageUtil {
     private final String COMMAND_PREFIX = "/";

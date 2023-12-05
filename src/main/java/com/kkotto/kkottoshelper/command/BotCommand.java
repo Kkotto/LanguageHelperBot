@@ -1,4 +1,4 @@
-package com.kkotto.kkottoshelper.service.command;
+package com.kkotto.kkottoshelper.command;
 
 import org.telegram.telegrambots.meta.api.objects.Update;
 

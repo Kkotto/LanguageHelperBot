@@ -1,10 +1,10 @@
 package com.kkotto.kkottoshelper.controller;
 
-import com.kkotto.kkottoshelper.gitignore.CustomConsts;
-import com.kkotto.kkottoshelper.service.command.CommandContainer;
-import com.kkotto.kkottoshelper.service.command.CommandList;
+import com.kkotto.kkottoshelper.util.constants.InitConstants;
+import com.kkotto.kkottoshelper.command.CommandContainer;
+import com.kkotto.kkottoshelper.command.CommandList;
 import com.kkotto.kkottoshelper.service.impl.SendMessageServiceImpl;
-import com.kkotto.kkottoshelper.service.util.MessageUtil;
+import com.kkotto.kkottoshelper.util.MessageUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -21,8 +21,8 @@ public class KkottosHelper extends TelegramLongPollingBot {
     private final MessageUtil messageUtil;
 
     public KkottosHelper() {
-        this.botToken = CustomConsts.BOT_TOKEN;
-        this.botUsername = CustomConsts.BOT_USERNAME;
+        this.botToken = InitConstants.BOT_TOKEN;
+        this.botUsername = InitConstants.BOT_USERNAME;
         this.commandContainer = new CommandContainer(new SendMessageServiceImpl(this));
         this.messageUtil = new MessageUtil();
     }

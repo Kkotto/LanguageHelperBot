@@ -1,6 +1,6 @@
 package com.kkotto.kkottoshelper.controller;
 
-import com.kkotto.kkottoshelper.exception.RequestException;
+import com.kkotto.kkottoshelper.util.exception.RequestException;
 import com.kkotto.kkottoshelper.model.free_dictionary.Word;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

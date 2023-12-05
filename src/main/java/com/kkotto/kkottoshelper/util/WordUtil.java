@@ -1,4 +1,4 @@
-package com.kkotto.kkottoshelper.service.util;
+package com.kkotto.kkottoshelper.util;
 
 import com.kkotto.kkottoshelper.model.free_dictionary.Definition;
 import com.kkotto.kkottoshelper.model.free_dictionary.Meaning;

@@ -1,8 +1,8 @@
-package com.kkotto.kkottoshelper.service.command.impl;
+package com.kkotto.kkottoshelper.command.impl;
 
+import com.kkotto.kkottoshelper.command.BotCommand;
+import com.kkotto.kkottoshelper.command.CommandList;
 import com.kkotto.kkottoshelper.service.SendMessageService;
-import com.kkotto.kkottoshelper.service.command.BotCommand;
-import com.kkotto.kkottoshelper.service.command.CommandList;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 public class HelpCommand implements BotCommand {

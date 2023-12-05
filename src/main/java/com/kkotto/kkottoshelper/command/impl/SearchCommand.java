@@ -1,13 +1,13 @@
-package com.kkotto.kkottoshelper.service.command.impl;
+package com.kkotto.kkottoshelper.command.impl;
 
-import com.kkotto.kkottoshelper.exception.RequestException;
+import com.kkotto.kkottoshelper.command.BotCommand;
+import com.kkotto.kkottoshelper.command.CommandList;
+import com.kkotto.kkottoshelper.util.exception.RequestException;
 import com.kkotto.kkottoshelper.model.free_dictionary.Word;
 import com.kkotto.kkottoshelper.service.SearchService;
 import com.kkotto.kkottoshelper.service.SendMessageService;
-import com.kkotto.kkottoshelper.service.command.BotCommand;
-import com.kkotto.kkottoshelper.service.command.CommandList;
 import com.kkotto.kkottoshelper.service.impl.SearchServiceImpl;
-import com.kkotto.kkottoshelper.service.util.WordUtil;
+import com.kkotto.kkottoshelper.util.WordUtil;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 import java.util.List;

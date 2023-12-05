@@ -1,4 +1,4 @@
-package com.kkotto.kkottoshelper.exception;
+package com.kkotto.kkottoshelper.util.exception;
 
 public class RequestException extends Exception {
     public static final String NOT_FOUND_EXCEPTION = "Sorry, no data is found, huh? Please, check spelling and try again.";
