@@ -2,13 +2,14 @@ package com.kkotto.kkottoshelper.command.impl;
 
 import com.kkotto.kkottoshelper.command.BotCommand;
 import com.kkotto.kkottoshelper.command.CommandList;
+import com.kkotto.kkottoshelper.keyboard.InlineKeyboard;
 import com.kkotto.kkottoshelper.util.exception.RequestException;
 import com.kkotto.kkottoshelper.model.free_dictionary.Word;
-import com.kkotto.kkottoshelper.service.FindInDictionaryService;
 import com.kkotto.kkottoshelper.service.SendMessageService;
-import com.kkotto.kkottoshelper.service.impl.FindInDictionaryServiceImpl;
+import com.kkotto.kkottoshelper.service.FindInDictionaryService;
 import com.kkotto.kkottoshelper.util.WordUtil;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class FindCommand implements BotCommand {
     private final SendMessageService sendMessageService;
     private final FindInDictionaryService findInDictionaryService;
     private final WordUtil wordUtil;
+    private final InlineKeyboard inlineKeyboard;
     private final String EMPTY_REQUEST = String.format(
             """
                     Oh dear! I see your enthusiasm, but <b><i>to find a word</i></b> you need to <b><i>specify the word</i></b>, huh?
@@ -29,7 +31,8 @@ public class FindCommand implements BotCommand {
 
     public FindCommand(SendMessageService sendMessageService) {
         this.sendMessageService = sendMessageService;
-        this.findInDictionaryService = new FindInDictionaryServiceImpl();
+        this.inlineKeyboard = new InlineKeyboard();
+        this.findInDictionaryService = new FindInDictionaryService();
         this.wordUtil = new WordUtil();
     }
 
@@ -40,10 +43,10 @@ public class FindCommand implements BotCommand {
         try {
             if (!userInputRequest.isEmpty()) {
                 List<Word> response = findInDictionaryService.search(userInputRequest);
-                List<String> messages = wordUtil.parseFreeDictionaryResponse(response);
-                for (String message : messages) {
-                    sendMessageService.sendMessage(chatId, message);
-                }
+                List<String> responseResultMessageList = wordUtil.parseFreeDictionaryResponse(response);
+                String displayMessage = generateMessageTextToDisplay(responseResultMessageList);
+                InlineKeyboardMarkup inlineKeyboardMarkup = inlineKeyboard.buildKeyboard(responseResultMessageList);
+                sendMessageService.sendMessage(chatId, displayMessage, inlineKeyboardMarkup);
             } else {
                 sendMessageService.sendMessage(chatId, EMPTY_REQUEST);
             }
@@ -54,5 +57,9 @@ public class FindCommand implements BotCommand {
 
     private String getFindRequest(Update update) {
         return update.getMessage().getText().substring(CommandList.FIND.getCommandName().length()).trim();
+    }
+
+    private String generateMessageTextToDisplay(List<String> responseResultMessageList) {
+        return responseResultMessageList.get(0);
     }
 }
