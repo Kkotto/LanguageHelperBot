@@ -39,3 +39,4 @@ out/
 ### Applitcation ###
 /src/main/java/com/kkotto/kkottoshelper/gitignore/CustomConsts.java
 /src/main/resources/application.properties
+/src/main/java/com/kkotto/kkottoshelper/util/constants
