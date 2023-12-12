@@ -18,4 +18,11 @@ public class FindInDictionaryServiceImpl implements FindInDictionaryService {
     public List<WordDto> search(String request) throws RequestException {
         return freeDictionaryController.searchInDictionary(request);
     }
+
+    @Override
+    public void saveResponse(List<WordDto> response) {
+        for (WordDto word : response) {
+
+        }
+    }
 }

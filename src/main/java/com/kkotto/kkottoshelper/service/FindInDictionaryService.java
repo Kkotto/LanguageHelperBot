@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface FindInDictionaryService {
     List<WordDto> search(String request) throws RequestException;
+
+    void saveResponse(List<WordDto> response);
 }

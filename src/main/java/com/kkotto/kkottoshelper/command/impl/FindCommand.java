@@ -40,6 +40,7 @@ public class FindCommand implements BotCommand {
         try {
             if (!userInputRequest.isEmpty()) {
                 List<WordDto> response = findInDictionaryService.search(userInputRequest);
+                findInDictionaryService.saveResponse(response);
                 List<String> messages = wordUtil.parseFreeDictionaryResponse(response);
                 for (String message : messages) {
                     sendMessageService.sendMessage(chatId, message);
