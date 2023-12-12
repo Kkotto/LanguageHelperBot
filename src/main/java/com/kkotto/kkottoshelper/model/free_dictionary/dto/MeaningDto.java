@@ -1,4 +1,4 @@
-package com.kkotto.kkottoshelper.model.free_dictionary;
+package com.kkotto.kkottoshelper.model.free_dictionary.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,9 +7,9 @@ import java.util.List;
 
 @Getter
 @Setter
-public class Meaning {
+public class MeaningDto {
     private String partOfSpeech;
-    private List<Definition> definitions;
+    private List<DefinitionDto> definitionDtoList;
 
     @Override
     public String toString() {
@@ -21,6 +21,6 @@ public class Meaning {
                                         
                         """,
                 this.partOfSpeech,
-                this.definitions);
+                this.definitionDtoList);
     }
 }

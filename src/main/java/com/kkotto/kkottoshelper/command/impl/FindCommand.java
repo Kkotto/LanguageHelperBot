@@ -2,8 +2,8 @@ package com.kkotto.kkottoshelper.command.impl;
 
 import com.kkotto.kkottoshelper.command.BotCommand;
 import com.kkotto.kkottoshelper.command.CommandList;
+import com.kkotto.kkottoshelper.model.free_dictionary.dto.WordDto;
 import com.kkotto.kkottoshelper.util.exception.RequestException;
-import com.kkotto.kkottoshelper.model.free_dictionary.Word;
 import com.kkotto.kkottoshelper.service.FindInDictionaryService;
 import com.kkotto.kkottoshelper.service.SendMessageService;
 import com.kkotto.kkottoshelper.service.impl.FindInDictionaryServiceImpl;
@@ -39,7 +39,7 @@ public class FindCommand implements BotCommand {
         String chatId = update.getMessage().getChatId().toString();
         try {
             if (!userInputRequest.isEmpty()) {
-                List<Word> response = findInDictionaryService.search(userInputRequest);
+                List<WordDto> response = findInDictionaryService.search(userInputRequest);
                 List<String> messages = wordUtil.parseFreeDictionaryResponse(response);
                 for (String message : messages) {
                     sendMessageService.sendMessage(chatId, message);

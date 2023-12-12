@@ -1,8 +1,8 @@
 package com.kkotto.kkottoshelper.service.impl;
 
 import com.kkotto.kkottoshelper.controller.FreeDictionaryController;
+import com.kkotto.kkottoshelper.model.free_dictionary.dto.WordDto;
 import com.kkotto.kkottoshelper.util.exception.RequestException;
-import com.kkotto.kkottoshelper.model.free_dictionary.Word;
 import com.kkotto.kkottoshelper.service.FindInDictionaryService;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public class FindInDictionaryServiceImpl implements FindInDictionaryService {
     }
 
     @Override
-    public List<Word> search(String request) throws RequestException {
+    public List<WordDto> search(String request) throws RequestException {
         return freeDictionaryController.searchInDictionary(request);
     }
 }

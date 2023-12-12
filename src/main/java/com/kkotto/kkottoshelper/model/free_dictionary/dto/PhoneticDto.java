@@ -1,11 +1,11 @@
-package com.kkotto.kkottoshelper.model.free_dictionary;
+package com.kkotto.kkottoshelper.model.free_dictionary.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Phonetic {
+public class PhoneticDto {
     private String text;
     private String audio;
 

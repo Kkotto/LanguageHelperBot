@@ -1,73 +1,73 @@
 package com.kkotto.kkottoshelper.util;
 
-import com.kkotto.kkottoshelper.model.free_dictionary.Definition;
-import com.kkotto.kkottoshelper.model.free_dictionary.Meaning;
-import com.kkotto.kkottoshelper.model.free_dictionary.Phonetic;
-import com.kkotto.kkottoshelper.model.free_dictionary.Word;
+import com.kkotto.kkottoshelper.model.free_dictionary.dto.DefinitionDto;
+import com.kkotto.kkottoshelper.model.free_dictionary.dto.MeaningDto;
+import com.kkotto.kkottoshelper.model.free_dictionary.dto.PhoneticDto;
+import com.kkotto.kkottoshelper.model.free_dictionary.dto.WordDto;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WordUtil {
-    public List<String> parseFreeDictionaryResponse(List<Word> wordList) {
+    public List<String> parseFreeDictionaryResponse(List<WordDto> wordDtoList) {
         List<String> resultList = new ArrayList<>();
-        for (Word word : wordList) {
+        for (WordDto wordDto : wordDtoList) {
             StringBuilder result = new StringBuilder();
             // Title
             result.append("<b>Title: </b>")
-                    .append(word.getWord())
+                    .append(wordDto.getWordDto())
                     .append("\n");
             // Phonetics
-            if (!(word.getPhonetic() == null) && !word.getPhonetic().isEmpty()) {
+            if (!(wordDto.getPhoneticDto() == null) && !wordDto.getPhoneticDto().isEmpty()) {
                 result.append("<b>Phonetics: </b>")
-                        .append(word.getPhonetic());
+                        .append(wordDto.getPhoneticDto());
             }
             // Other phonetics
-            if (!(word.getPhonetics() == null) && !word.getPhonetics().isEmpty()) {
-                for (Phonetic phonetic : word.getPhonetics()) {
-                    if(!(phonetic.getText()==null) && !phonetic.getText().isEmpty()) {
+            if (!(wordDto.getPhoneticDtoList() == null) && !wordDto.getPhoneticDtoList().isEmpty()) {
+                for (PhoneticDto phoneticDto : wordDto.getPhoneticDtoList()) {
+                    if(!(phoneticDto.getText()==null) && !phoneticDto.getText().isEmpty()) {
                         result.append(", ")
-                                .append(phonetic.getText());
+                                .append(phoneticDto.getText());
                     }
                 }
             }
             result.append("\n");
             // Meaning
-            if (!(word.getMeanings() == null) && !word.getMeanings().isEmpty()) {
+            if (!(wordDto.getMeaningDtoList() == null) && !wordDto.getMeaningDtoList().isEmpty()) {
                 result.append("<b>Meaning: </b>")
                         .append("\n");
-                List<Meaning> meaningList = word.getMeanings();
-                for (int i = 0; i < meaningList.size(); i++) {
+                List<MeaningDto> meaningDtoList = wordDto.getMeaningDtoList();
+                for (int i = 0; i < meaningDtoList.size(); i++) {
                     result.append(i + 1)
                             .append(". ");
-                    Meaning meaning = meaningList.get(i);
-                    if (!(meaning.getPartOfSpeech() == null) && !meaning.getPartOfSpeech().isEmpty()) {
+                    MeaningDto meaningDto = meaningDtoList.get(i);
+                    if (!(meaningDto.getPartOfSpeech() == null) && !meaningDto.getPartOfSpeech().isEmpty()) {
                         result.append("<i>")
-                                .append(word.getMeanings().get(i).getPartOfSpeech())
+                                .append(wordDto.getMeaningDtoList().get(i).getPartOfSpeech())
                                 .append("</i>")
                                 .append("\n");
                     }
-                    if (!(meaning.getDefinitions() == null) && !meaning.getDefinitions().isEmpty()) {
-                        for (Definition definition : meaning.getDefinitions()) {
-                            if (!(definition.getDefinition() == null) && !definition.getDefinition().isEmpty()) {
-                                result.append(definition.getDefinition())
+                    if (!(meaningDto.getDefinitionDtoList() == null) && !meaningDto.getDefinitionDtoList().isEmpty()) {
+                        for (DefinitionDto definitionDto : meaningDto.getDefinitionDtoList()) {
+                            if (!(definitionDto.getDefinitionDto() == null) && !definitionDto.getDefinitionDto().isEmpty()) {
+                                result.append(definitionDto.getDefinitionDto())
                                         .append("\n");
                             }
-                            if (!(definition.getExample() == null) && !definition.getExample().isEmpty()) {
+                            if (!(definitionDto.getExample() == null) && !definitionDto.getExample().isEmpty()) {
                                 result.append("<b>Example: </b>")
-                                        .append(definition.getExample())
+                                        .append(definitionDto.getExample())
                                         .append("\n");
                             }
-                            if (!(definition.getSynonyms() == null) && !definition.getSynonyms().isEmpty()) {
+                            if (!(definitionDto.getSynonyms() == null) && !definitionDto.getSynonyms().isEmpty()) {
                                 result.append("<i>Synonyms: </i>");
-                                for (String synonym : definition.getSynonyms()) {
+                                for (String synonym : definitionDto.getSynonyms()) {
                                     result.append(synonym).append(" ");
                                 }
                                 result.append("\n");
                             }
-                            if (!(definition.getAntonyms() == null) && !definition.getAntonyms().isEmpty()) {
+                            if (!(definitionDto.getAntonyms() == null) && !definitionDto.getAntonyms().isEmpty()) {
                                 result.append("<i>Antonyms: </i>");
-                                for (String antonym : definition.getAntonyms()) {
+                                for (String antonym : definitionDto.getAntonyms()) {
                                     result.append(antonym).append(" ");
                                 }
                                 result.append("\n");

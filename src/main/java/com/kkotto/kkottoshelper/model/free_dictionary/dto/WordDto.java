@@ -1,4 +1,4 @@
-package com.kkotto.kkottoshelper.model.free_dictionary;
+package com.kkotto.kkottoshelper.model.free_dictionary.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,12 +7,12 @@ import java.util.List;
 
 @Getter
 @Setter
-public class Word {
-    private String word;
-    private String phonetic;
-    private List<Phonetic> phonetics;
+public class WordDto {
+    private String wordDto;
+    private String phoneticDto;
+    private List<PhoneticDto> phoneticDtoList;
     private String origin;
-    private List<Meaning> meanings;
+    private List<MeaningDto> meaningDtoList;
 
     @Override
     public String toString() {
@@ -27,10 +27,10 @@ public class Word {
                                         
                                         <b>Meaning:</b> %s
                         """,
-                this.word,
-                this.phonetic,
-                this.phonetics,
+                this.wordDto,
+                this.phoneticDto,
+                this.phoneticDtoList,
                 this.origin,
-                this.meanings);
+                this.meaningDtoList);
     }
 }
